@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ17Append.html</title>
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+    <script>
+        /*
+            그냥 위치만 다르고 같은 함수
+            
+            append() 와 appendTo()
+
+            .append()와 .appendTo() 함수는 동일한 기능을 하지만, 추가될 컨텐츠와 타겟의 위치가 두 함수의 가장 큰 차이점입니다.
+
+            $( target ).append( 추가할 내용);
+            $( 추가할 내용 ).appendTo( target );
+
+            prepend() 와 prependTo()
+
+            .prepend() 와 .prependTo() 역시 함수의 기능은 동일 하지만, 추가될 컨텐츠와 타겟의 위치가 다릅니다.
+
+            $( target ).prepend( 추가할 내용);
+            $( 추가할 내용 ).prependTo( target );
+        */
+        $(function(){
+            $('#btn1').click(function(){
+                var row = $('#row').val();
+                var col = $('#col').val();
+
+                var table = "<table border = '1'>";
+                    for(var i=1 ; i<=row ; i++){
+                        table += "<tr>";
+
+                        for(var j=1 ; j<=col ; j++){
+                            table += "<td>" + i + "행, " + j + "열</td>";
+                        }
+
+                        table += "</tr>";
+                    }
+                    table += "</table>";
+
+                    /*
+                    append()
+                        : 기존 컨텐츠 뒤에 새로운 내용을 추가할때 사용함
+                        방식) $(선택자).append(컨텐츠)
+                    */
+                    $('#appendDisplay').append(table);
+            });
+
+            $('#btn2').click(function(){
+                var row = $('#row').val();
+                var col = $('#col').val();
+
+                var table = "<table border = '1'>";
+                    for(var i=1 ; i<=row ; i++){
+                        table += "<tr>";
+
+                        for(var j=1 ; j<=col ; j++){
+                            table += "<td>" + i + "행, " + j + "열</td>";
+                        }
+
+                        table += "</tr>";
+                    }
+                    table += "</table>";
+                    /*
+                    html()
+                        : 기존의 컨텐츠를 제거한 후 새로운 내용을 추가함
+                    */
+                    $('#appendDisplay').html(table);
+            });
+
+            $('#btn3').click(function(){
+                var row = $('#row').val();
+                var col = $('#col').val();
+
+                var table = "<table border = '1'>";
+                    for(var i=1 ; i<=row ; i++){
+                        table += "<tr>";
+
+                        for(var j=1 ; j<=col ; j++){
+                            table += "<td>" + i + "행, " + j + "열</td>";
+                        }
+
+                        table += "</tr>";
+                    }
+                    table += "</table>";
+
+                    /*
+                    prependTo()
+                        : 기존 컨텐츠 앞에 새로운 내용을 추가할때 사용함
+                        방식) $(컨텐츠).prependTo(선택자)
+                    */
+                    // $('#appendDisplay').prepend(table);
+                    $(table).prependTo('#appendDisplay');
+            });
+        });
+    </script>
+</head>
+<body>
+   <h2>append() 메소드</h2>
+   
+   <input type="number" id="row" value="2" />행
+   <input type="number" id="col" value="2" />열
+    <input type="button" id="btn1" value="append테이블추가" />
+    <input type="button" id="btn2" value="html테이블추가" />
+    <input type="button" id="btn3" value="prepend테이블추가" />
+   <div id="appendDisplay">
+      여기에 생성됨
+   </div>   
+ 
+</body>
+
+</html>
